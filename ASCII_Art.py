@@ -2,92 +2,95 @@
 # https://www.youtube.com/watch?v=FtutLA63Cp8&ab_【東方】Bad Apple!! ＰＶ【影絵】
 # Run using the run_apple.py for smooth quality preventing frame delay
 
-import cv2
-import numpy as np
-import time
 import os
+import sys
+import time
+import cv2
 import pygame
 import pyautogui
-import sys
 
 # ASCII characters 
-ASCII_CHARS = ' $8obdpq0L@n1+"`' # ascii_chars 
+ASCII_CHARS = '  .,:;+*&%@#$' # ascii_chars 
 # Other ASCII char (alternative)
     # '  .,:;+*&%@#$' for Bad Apple!! feat.SEKAI (SEKAI version)
     # ' $8obdpq0L@n1+"`' for Bad Apple!! (Original version)
-    # ' @#S%?*+;:,.' alternative
+    # ' @%#*+=-:. ' alternative
 
 # Video path for capture
-video_path = "Bad_apple!!.mp4" # change mp4 file path for different versions of Bad Apple!!
-audio_path = "Bad_apple!!.mp3" # change mp3 file path for different versions of Bad Apple!!
+# Media paths (change these if needed)
+VIDEO_PATH = "Bad_Apple!!.mp4"
+AUDIO_PATH = "Bad_Apple!!.mp3"
 
-cap = cv2.VideoCapture(video_path) # for mp4
+# Terminal output width (155 is good for full-screen terminals)
+OUTPUT_WIDTH = 155
 
-# Output width
-OUTPUT_WIDTH = 155 # terminal size make sure to scroll the terminal to the top for full view
-             # set to 150 if running in VS Code 
-fps = 30 # Adjust temporarily if the fps doesn't sync the video copy this on fps | fps = cap.get(cv2.CAP_PROP_FPS) 
-frame_time = 1 / fps  # Time per frame 
+# FPS override — using cap.get() was unreliable here
+FPS = 30
+FRAME_TIME = 1 / FPS
 
-# audio using pygame
-pygame.mixer.init()
-pygame.mixer.music.load(audio_path)
-pygame.mixer.music.set_volume(0.5)  # Adjust accordingly (0.0 to 1.0)
 
-# Function to convert the frame to ASCII 
-def video_to_ascii(frame, width=OUTPUT_WIDTH):
-    height, orig_width = frame.shape
-    aspect_ratio = orig_width / height
-    new_height = int(width / aspect_ratio * 0.5)  # height scaling
-    resized_frame = cv2.resize(frame, (width, new_height))
+def convert_frame_to_ascii(gray_frame, width=OUTPUT_WIDTH):
+    """
+    Turns a grayscale image into ASCII art.
+    Not the most optimized thing on Earth, but readable and flexible.
+    """
+    h, w = gray_frame.shape
+    aspect_ratio = w / h
+    new_height = int((width / aspect_ratio) * 0.5)
 
-    ascii_frame = "\n".join(
-        "".join(ASCII_CHARS[min(pixel // 25, len(ASCII_CHARS) - 1)] for pixel in row)
-        for row in resized_frame
-    )
-    return ascii_frame
+    resized = cv2.resize(gray_frame, (width, new_height))
 
-# Hide cursor for a cleaner effect
+    ascii_rows = []
+    for row in resized:
+        line = ""
+        for pixel in row:
+            idx = min(pixel // 25, len(ASCII_CHARS) - 1)
+            line += ASCII_CHARS[idx]
+        ascii_rows.append(line)
+
+    return "\n".join(ascii_rows)
+
+
 print("\033[?25l", end="")
 
-# Start audio (to sync in with the video) using pygame
+pygame.mixer.init()
+pygame.mixer.music.load(AUDIO_PATH)
+pygame.mixer.music.set_volume(0.5)
+
+cap = cv2.VideoCapture(VIDEO_PATH)
+
 pygame.mixer.music.play()
-start_time = time.time()  # time tracking
+start_time = time.time()
 
-frame_count = 0
+frame_index = 0
 first_frame = True
+
 while cap.isOpened():
-    ret, frame = cap.read()
-    if not ret:
-        break  
-        # If complete scroll down the terminal | for Visual Studio Community close down the terminal 
-    # Convert frame to grayscale (hahaha)
-    gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    ok, frame = cap.read()
+    if not ok:
+        break
 
-    # Convert to ASCII
-    ascii_art = video_to_ascii(gray_frame)
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    ascii_art = convert_frame_to_ascii(gray)
 
-    # Clear screen and print ASCII frame 
-    # If the screen flashes abnormally make adjustments
     if not first_frame:
-        sys.stdout.write("\033[H")  # move cursor to top (no flicker)
+        sys.stdout.write("\033[H")
     else:
         first_frame = False
 
     sys.stdout.write(ascii_art)
     sys.stdout.flush()
 
-    # Sync with audio
-    frame_count += 1
-    expected_time = start_time + (frame_count * frame_time)
-    sleep_time = max(0, expected_time - time.time())
-    time.sleep(sleep_time)
+    frame_index += 1
+    expected = start_time + (frame_index * FRAME_TIME)
+    delay = expected - time.time()
 
-# Finishes after the video ends
+    if delay > 0:
+        time.sleep(delay)
+
 cap.release()
 pygame.mixer.music.stop()
 
-# Restore cursor visibility
 print("\033[?25h", end="")
 
 pyautogui.hotkey("f11")
