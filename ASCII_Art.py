@@ -2,38 +2,35 @@
 # https://www.youtube.com/watch?v=FtutLA63Cp8&ab_【東方】Bad Apple!! ＰＶ【影絵】
 # Run using the run_apple.py for smooth quality preventing frame delay
 
+import pygame
+import pyautogui  
 import os
 import sys
 import time
 import cv2
-import pygame
-import pyautogui
 
 # ASCII characters 
-ASCII_CHARS = '  .,:;+*&%@#$' # ascii_chars 
+ascii_char = ' @%#*+=-:. ' # ascii_chars 
 # Other ASCII char (alternative)
     # '  .,:;+*&%@#$' for Bad Apple!! feat.SEKAI (SEKAI version)
     # ' $8obdpq0L@n1+"`' for Bad Apple!! (Original version)
-    # ' @%#*+=-:. ' alternative
+    # ' @%#*+=-:. ' for Honeypie MV
 
 # Video path for capture
 # Media paths (change these if needed)
-VIDEO_PATH = "Bad_Apple!!.mp4"
-AUDIO_PATH = "Bad_Apple!!.mp3"
+video_path = "audio & video/Honeypie MV.mp4"
+audio_path = "audio & video/Honeypie MV.mp3"
 
 # Terminal output width (155 is good for full-screen terminals)
-OUTPUT_WIDTH = 155
+output_width = 155
 
 # FPS override — using cap.get() was unreliable here
-FPS = 30
-FRAME_TIME = 1 / FPS
+fps = 24    # 24 fps for sekai ver
+frame_time = 1 / fps
 
 
-def convert_frame_to_ascii(gray_frame, width=OUTPUT_WIDTH):
-    """
-    Turns a grayscale image into ASCII art.
-    Not the most optimized thing on Earth, but readable and flexible.
-    """
+def convert_frame_to_ascii(gray_frame, width=output_width):
+
     h, w = gray_frame.shape
     aspect_ratio = w / h
     new_height = int((width / aspect_ratio) * 0.5)
@@ -44,8 +41,8 @@ def convert_frame_to_ascii(gray_frame, width=OUTPUT_WIDTH):
     for row in resized:
         line = ""
         for pixel in row:
-            idx = min(pixel // 25, len(ASCII_CHARS) - 1)
-            line += ASCII_CHARS[idx]
+            idx = min(pixel // 25, len(ascii_char) - 1)
+            line += ascii_char[idx]
         ascii_rows.append(line)
 
     return "\n".join(ascii_rows)
@@ -54,10 +51,10 @@ def convert_frame_to_ascii(gray_frame, width=OUTPUT_WIDTH):
 print("\033[?25l", end="")
 
 pygame.mixer.init()
-pygame.mixer.music.load(AUDIO_PATH)
-pygame.mixer.music.set_volume(0.5)
+pygame.mixer.music.load(audio_path)
+pygame.mixer.music.set_volume(0.1)
 
-cap = cv2.VideoCapture(VIDEO_PATH)
+cap = cv2.VideoCapture(video_path)
 
 pygame.mixer.music.play()
 start_time = time.time()
@@ -82,7 +79,7 @@ while cap.isOpened():
     sys.stdout.flush()
 
     frame_index += 1
-    expected = start_time + (frame_index * FRAME_TIME)
+    expected = start_time + (frame_index * frame_time)
     delay = expected - time.time()
 
     if delay > 0:
