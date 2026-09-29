@@ -2,9 +2,10 @@
 
 Ascii art of both Bad Apple!! and SEKAI version I made to impress my artist friend
 
-# Youtube URL for Bad Apple!! and Sekai Version
+# Youtube URL for Bad Apple!! and Sekai Version || Video Output URL
 * [Bad Apple!! Original PV](https://www.youtube.com/watch?v=FtutLA63Cp8)
 * [Bad Apple!! feat.SEKAI / 25時、ナイトコードで。 × 初音ミク](https://www.youtube.com/watch?v=v-fc1zv31zE)
+* https://youtu.be/n_wz6_KCGY4
 
 ---
 
