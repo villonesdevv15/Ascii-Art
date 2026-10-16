@@ -10,22 +10,32 @@ import time
 import cv2
 
 # ASCII characters 
-ascii_char = ' @%#*+=-:. ' # ascii_chars 
-# Other ASCII char (alternative)
-    # '  .,:;+*&%@#$' for Bad Apple!! feat.SEKAI (SEKAI version)
-    # ' $8obdpq0L@n1+"`' for Bad Apple!! (Original version)
-    # ' @%#*+=-:. ' for Honeypie MV
+class ascii_conveter:
+    def __init__(self, ascii_char, video_path, audio_path, output_width, fps, frame_time):
+        self.ascii_char = ascii_char
+        self.video_path = video_path
+        self.audio_path = audio_path
+        self.output_width = output_width
+        self.fps = fps
+        self.frame_time = frame_time
+
+
+ascii_char = ' $8obdpq0L@n1+"`' # ascii_chars 
+    # Other ASCII char (alternative)
+        # '  .,:;+*&%@#$' for Bad Apple!! feat.SEKAI (SEKAI version)
+        # ' $8obdpq0L@n1+"`' for Bad Apple!! (Original version)
+        # ' @%#*+=-:. ' for Honeypie MV
 
 # Video path for capture
 # Media paths (change these if needed)
-video_path = "audio & video/Honeypie MV.mp4"
-audio_path = "audio & video/Honeypie MV.mp3"
+video_path = "audio & video/Bad_Apple!!.mp4"
+audio_path = "audio & video/Bad_Apple!!.mp3"
 
 # Terminal output width (155 is good for full-screen terminals)
 output_width = 155
 
 # FPS override — using cap.get() was unreliable here
-fps = 24    # 24 fps for sekai ver
+fps = 30    # 24 fps for sekai ver 
 frame_time = 1 / fps
 
 
