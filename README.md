@@ -1,4 +1,4 @@
-# Ascii_Art_Bad-Apple-
+<img width="1919" height="912" alt="image" src="https://github.com/user-attachments/assets/0d2c2a89-5185-4492-aede-0ac0cd58f65a" /># Ascii_Art_Bad-Apple-
 
 Ascii art of both Bad Apple!! and SEKAI version I made to impress my artist friend
 
@@ -7,7 +7,8 @@ Ascii art of both Bad Apple!! and SEKAI version I made to impress my artist frie
 * [Bad Apple!! feat.SEKAI / 25時、ナイトコードで。 × 初音ミク](https://www.youtube.com/watch?v=v-fc1zv31zE)
 * https://youtu.be/n_wz6_KCGY4
 * RESULTS
-!(https://imgur.com/a/il9kwuC)
+<img width="1919" height="912" alt="image" src="https://github.com/user-attachments/assets/c78aa36e-42c2-4eb8-a60e-f48a7fa633c0" />
+
 
 ---
 
