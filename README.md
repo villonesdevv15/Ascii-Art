@@ -6,6 +6,8 @@ Ascii art of both Bad Apple!! and SEKAI version I made to impress my artist frie
 * [Bad Apple!! Original PV](https://www.youtube.com/watch?v=FtutLA63Cp8)
 * [Bad Apple!! feat.SEKAI / 25時、ナイトコードで。 × 初音ミク](https://www.youtube.com/watch?v=v-fc1zv31zE)
 * https://youtu.be/n_wz6_KCGY4
+* RESULTS
+![GitHub Logo](https://imgur.com/a/il9kwuC)
 
 ---
 
