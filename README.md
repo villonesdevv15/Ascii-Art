@@ -1,4 +1,4 @@
-<img width="1919" height="912" alt="image" src="https://github.com/user-attachments/assets/0d2c2a89-5185-4492-aede-0ac0cd58f65a" /># Ascii_Art_Bad-Apple-
+<img width="1916" height="1078" alt="image" src="https://github.com/user-attachments/assets/614ffced-4d92-4cf0-a419-99a01a3408b4" />
 
 Ascii art of both Bad Apple!! and SEKAI version I made to impress my artist friend
 
@@ -8,7 +8,8 @@ Ascii art of both Bad Apple!! and SEKAI version I made to impress my artist frie
 * https://youtu.be/n_wz6_KCGY4
 
 ---
-
+GRADE RESULTS 🥳😍
+<img width="1919" height="912" alt="image" src="https://github.com/user-attachments/assets/0d2c2a89-5185-4492-aede-0ac0cd58f65a" /># Ascii_Art_Bad-Apple-
 ## Features
 
 * **Terminal ASCII Rendering:** Converts video frames to ASCII art in real-time using OpenCV.
