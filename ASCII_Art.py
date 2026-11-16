@@ -9,17 +9,6 @@ import sys
 import time
 import cv2
 
-# ASCII characters 
-class ascii_conveter:
-    def __init__(self, ascii_char, video_path, audio_path, output_width, fps, frame_time):
-        self.ascii_char = ascii_char
-        self.video_path = video_path
-        self.audio_path = audio_path
-        self.output_width = output_width
-        self.fps = fps
-        self.frame_time = frame_time
-
-
 ascii_char = ' $8obdpq0L@n1+"`' # ascii_chars 
     # Other ASCII char (alternative)
         # '  .,:;+*&%@#$' for Bad Apple!! feat.SEKAI (SEKAI version)
