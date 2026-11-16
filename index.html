@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Art Video Player</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/icon.jpg">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>ASCII Art Video Player 📽️</h1>
+      <p>Turn your frames into ASCII art!</p>
+    </header>
+    <main>
+      <img src="images/ascii_art_header.gif" alt="Bad Apple!! Ascii Art" width="880">
+      <section>
+        <h2>About this Project 📄</h2>
+        <p>
+          This website is the web version of my Python ASCII art project. The
+          original program used OpenCV to read a video, converted each frame to
+          grayscale, and printed it in the terminal as text characters.
+        </p>
+        <p>
+          The dark pixels turn into light characters such as spaces,
+          while the bright pixels turn into heavy characters like @.
+          When the video is played fast, the screen seems to move like an
+          animation made of characters.
+        </p>
+        <p>
+          This project was inspired by the Bad Apple!! music video, a popular
+          meme that became a symbol of ASCII art videos. The original video is
+          a black-and-white animation set to a song from the Touhou Project
+          series.
+        </p>
+      </section>
+      <section>
+        <h2>How It Works ⚙️</h2>
+        <ol>
+          <li>The video plays in the background.</li>
+          <li>Each frame is drawn onto a small hidden canvas.</li>
+          <li>Every pixel is turned into a brightness value from 0 to 255.</li>
+          <li>The brightness picks a character from the selected character set.</li>
+          <li>The characters are joined into text and shown in the player.</li>
+        </ol>
+      </section>
+      <section>
+        <h2>Features 🎨</h2>
+        <ul>
+          <li>Upload your own video file from your device</li>
+          <li>Play, pause, and reset controls</li>
+          <li>Four resolutions, from Low (60x) to Max (200x)</li>
+          <li>Three ASCII character sets: Complex, Classic, and Modern</li>
+          <li>Adjustable font size, playback speed, and volume</li>
+          <li id="mobile">On mobile devices, the resolution starts at Low (60x) for best performance</li>
+        </ul>
+      </section>
+      <section>
+        <h2 id="video_caption">Video Player 🎬</h2>
+        <div class="ascii_viewport">
+          <div id="ascii_player">Upload a video to convert into ASCII art...</div>
+        </div>
+        <p id="status">Upload a video to begin...</p>
+
+        <div class="controls">
+          <label class="upload_btn">Upload Video
+            <input type="file" id="video_input" accept="video/*">
+          </label>
+          <button type="button" id="play_btn">Play</button>
+          <button type="button" id="pause_btn">Pause</button>
+          <button type="button" id="reset_btn">Reset</button>
+        </div>
+        <div class="controls">
+          <label>
+            Resolution:
+            <select id="resolution">
+              <option value="60">Low (60x)</option>
+              <option value="100">Medium (100x)</option>
+              <option value="150">High (150x)</option>
+              <option value="200" selected>Max (200x)</option>
+            </select>
+          </label>
+          <label>
+            Character Set:
+            <select id="charset">
+              <option value="1" selected>Complex (░▒▓█)</option>
+              <option value="2">Classic (`"+1n@L0qpdbo8$)</option>
+              <option value="3">Modern ( .:-=+*#%@)</option>
+            </select>
+          </label>
+        </div>
+        <div class="controls">
+          <label>
+            Font Size:
+            <input type="range" id="font_size" min="2" max="16" step="0.1" value="8">
+            <span id="font_size_value">8.0px</span>
+          </label>
+          <label>
+            Playback Speed:
+            <input type="range" id="playback_speed" min="0.5" max="2" step="0.1" value="1">
+            <span id="speed_value">1x</span>
+          </label>
+          <label>
+            Volume:
+            <input type="range" id="volume" min="0" max="1" step="0.01" value="1">
+            <span id="volume_value">100%</span>
+          </label>
+        </div>
+      </section>
+      <section>
+        <h2>About Me 👤</h2>
+        <ul class="social">
+          <li>
+            <a href="https://www.facebook.com/lorenz.villones" target="_blank" rel="noopener noreferrer">
+              <img src="images/facebook.png" alt="Facebook logo" width="40" height="40">
+              <span>Facebook</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/villonesdevv15" target="_blank" rel="noopener noreferrer">
+              <img src="images/github.png" alt="GitHub logo" width="40" height="40">
+              <span>GitHub</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer>
+      <p>Created by Lorenz Villones BIT11</p>
+    </footer>
+  </body>
+</html>
