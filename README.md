@@ -52,3 +52,6 @@ pip install opencv-python pygame pyautogui
 * Have three ASCII character sets from Basic and Complex sets
 * Has an adjustable font size and playback speed
 * For Mobile Device set your resolution to Low (60x) for optimization
+
+## Try my website here
+* https://ascii-video-player.netlify.app/
